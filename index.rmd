@@ -15,3 +15,7 @@ Currently my passion is wrangling across challenging datasets to find insights. 
 In my spare time I enjoy working on my various R based projects, building things, and talking about anything SciFi. 
 
 My resume is available [here](files/Anders_resume_2020V1.pdf)
+
+
+
+<!-- http://leesahanders.github.io -->

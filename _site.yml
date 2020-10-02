@@ -17,7 +17,7 @@ navbar:
           href: farkle.html
         
     - text: "Adventures"
-      icon: fa-portal-enter      
+      icon: fa-rocket 
       menu:
         - text: "Rav4 Camper Conversion"
           href: ravmajal.html
