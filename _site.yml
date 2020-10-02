@@ -4,12 +4,31 @@ navbar:
   title: "Lisa Anders"
   left:
     - text: "Home"
+      icon: fa-home
       href: index.html
-    - text: "Projects"
-      href: projects.html
+    - text: "R Projects"
+      icon: fa-gear
+      menu:
+        - text: "Battlebots Brackets"
+          href: battlebots.html
+        - text: "Medical Explorer"
+          href: medicalexplorer.html
+        - text: "Farkle Statistics"
+          href: farkle.html
+        
+    - text: "Adventures"
+      icon: fa-portal-enter      
+      menu:
+        - text: "Rav4 Camper Conversion"
+          href: ravmajal.html
+        - text: "Map"
+          href: map.html
+
   right:
     - icon: fa-envelope fa-lg
       href: contact.html
+    - icon: fa-facebook-f fa-lg
+      href: https://www.facebook.com/LisamaeAnders/
     - icon: fa-github fa-lg
       href: https://github.com/leesahanders
     - icon: fa-linkedin fa-lg
