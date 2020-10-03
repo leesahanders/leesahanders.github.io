@@ -3,9 +3,9 @@ title: "To wander across this wide wide world"
 name: "Lisa Anders"
 ---
 
-Hello, Website!
+This page is under development, come check it again later
 
-```{r}
+```{r eval = FALSE}
 #default, cerulean, journal, flatly, darkly, readable, spacelab, united, cosmo, lumen, paper, sandstone, simplex, and yeti.
 #Don't like: sandstone (dark header), cerulean(very blue), readable(almost but don't like blue text),yeti (dark header), flatly (dark header), darkly (blueheader but dark theme), united (red), cosmo (black header)
 #Very nice: paper, journal (can't put my finger on it but it is kinda goofy), simplex (but took longest to load), spacelab (has light grey header),lumen (light header)

@@ -2,10 +2,15 @@
 name: "Lisa Anders"
 ---
 
-
+  
+  
 
 
 <img src="images/Rocinante.jpg" style="width:50%; border:10px solid; margin-right: 20px" align="left">
+
++ __Name:__ Lisa 
++ __Ocupation:__ Product Engineer
++ __Hobbies:__ Coffee, puzzles, games, hiking, building things, the hurdy gurdy
 
 
 Hello there! You must be pretty awesome if you are checking out my humble website. Welcome! 
