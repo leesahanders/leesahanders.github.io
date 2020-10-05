@@ -7,7 +7,7 @@ navbar:
       icon: fa-home
       href: index.html
     - text: "R Projects"
-      icon: fa-gear
+      icon: fa-database
       menu:
         - text: "Battlebots Brackets"
           href: battlebots.html
@@ -24,10 +24,18 @@ navbar:
         - text: "Map"
           href: map.html
 
+    - text: "The Workshop"
+      icon: fa-birthday-cake 
+      menu:
+        - text: "Resin Dice"
+          href: resin.html
+          
   right:
     - icon: fa-envelope fa-lg
     - icon: fa-facebook-f fa-lg
       href: https://www.facebook.com/LisamaeAnders/
+    - icon: fa-book fa-lg
+      href: https://www.goodreads.com/user/show/47707460-lisa
     - icon: fa-github fa-lg
       href: https://github.com/leesahanders
     - icon: fa-linkedin fa-lg
