@@ -3,27 +3,7 @@ title: "Adventures in Resin: Making your own dice"
 name: "Lisa Anders"
 ---
 
-
-<style>
-.col-leftmid{
-  float: left;
-  width: 30%;
-  text-align: left;
-}
-
-.col-rightmid{
-  float: right;
-  width: 65%;
-  text-align: left;
-}
-
-.col-default{
-  width: 100%;
-  text-align: left;
-}
-</style>
-
-
+---
 
 This page is under development, keep checking back as I learn more and have more useful information to share! 
 
@@ -32,18 +12,45 @@ This page is under development, keep checking back as I learn more and have more
 
 ## Experiments {.tabset}
 
+### Silicone Mold
 
-### Mold Making: Attempt 1
+<p float="left">
+![](images/resin/PXL_20201005_161849020.MP.jpg){#id .class width=20%}
+</p>
 
-<div>
 
-<div class="col-leftmid">
+<img src="images/resin/PXL_20201005_161849020.MP.jpg" style="width:20%; border:10px solid; margin-right: 20px" align="left">
 
-<img src="images/resin/PXL_20201005_031026679.MP.jpg" style="border:10px solid; margin-right: 20px" align="left">
+Try 2 of creating the silicone mold. I was able to use the lessons from last time and create a mold with the sprue large enough to get a good amount in there while still having it be small enough that hopefully polishing won't be horrible. 
 
-</div>
+<img src="images/resin/PXL_20201005_163835042.MP_2.jpg" style="width:20%; border:10px solid; margin-right: 20px" align="left">
 
-<div class="col-rightmid">
+Interesting enough I think that the mixture is very sensitive to the quantities of each part. While I was very careful to match the volumes using my trusty 1/2 cup measuring spoon we can notice a distinct change in color. Despite this change in color it did successfully set and it doesn't feel different and will do nicely as a mold. 
+
+
+END TEST
+
+
+
+
+
+<img src="images/resin/PXL_20201005_161849020.MP.jpg" style="width:20%; border:10px solid; margin-right: 20px" align="left">
+
+Try 2 of creating the silicone mold. I was able to use the lessons from last time and create a mold with the sprue large enough to get a good amount in there while still having it be small enough that hopefully polishing won't be horrible. 
+
+<img src="images/resin/PXL_20201005_163835042.MP_2.jpg" style="width:20%; border:10px solid; margin-right: 20px" align="left">
+
+Interesting enough I think that the mixture is very sensitive to the quantities of each part. While I was very careful to match the volumes using my trusty 1/2 cup measuring spoon we can notice a distinct change in color. Despite this change in color it did successfully set and it doesn't feel different and will do nicely as a mold. 
+
+<img src="images/resin/PXL_20201005_160755962.MP.jpg" style="width:20%; border:10px solid; margin-right: 20px" align="left">
+
+I'm a little concerned with my splits in the mold for removing the pieces. Hopefully it will seal up well enough that we won't have the resin leaking out or really large obvious lines. 
+
+<p style="color:grey; font-style:italic;">10/5-6/2020</p>
+
+---
+
+<img src="images/resin/PXL_20201005_031026679.MP.jpg" style="width:20%; border:10px solid; margin-right: 20px" align="left">
 
 The basics I've gathered for learning how to make molds are: 
 
@@ -54,16 +61,8 @@ The basics I've gathered for learning how to make molds are:
  - Plasticine Clay
  - Various small disposable cups, disposable plastic fork, measuring cup
  - Handful of my least favorite dice
- 
-</div>
 
-<div class="col-leftmid">
-
-<img src="images/resin/PXL_20201005_013447645.MP.jpg" style="border:10px solid; margin-right: 20px" align="left">
-
-</div>
-
-<div class="col-rightmid">
+<img src="images/resin/PXL_20201005_013447645.MP.jpg" style="width:20%; border:10px solid; margin-right: 20px" align="left">
 
 Going to the crafts store the whole time I was thinking "this is going to go GREAT. How hard could it be? The videos are so calming, surely the whole process is straight up zen."
 
@@ -71,37 +70,110 @@ WRONG.
 
 After learning how difficult it is to attach a pin into a D6 (I would describe it more as teetering perilously rather than actually mounted) we got to move onto lessons into practically what pot time is. While on thebox it may say pot time of 30 minutes in practice I had less than 20 minutes to get the silicone into the mold before it was hardening to the point of not flowing smoothly. 
 
-</div>
-
-<div class="col-leftmid">
-
-<img src="images/resin/PXL_20201005_015535872.MP.jpg" style="border:10px solid; margin-right: 20px" align="left">
-
-</div>
-
-<div class="col-rightmid">
+<img src="images/resin/PXL_20201005_015535872.MP.jpg" style="width:20%; border:10px solid; margin-right: 20px" align="left">
 
 Also had complete failure of the attempt at a vacuum chamber using my hand vaccuum, a small bell jar, and the valve on one of those clothes bags that let you vacuum the air out for better storage. No bubbles were successfully pulled out using this method, whether due to lack of a seal between the bell jar and the valve or if just wasn't a strong enough vacuum. 
 
-</div>
-
-<div class="col-leftmid">
-
-<img src="images/resin/PXL_20201005_022732163.MP.jpg" style="border:10px solid; margin-right: 20px" align="left">
-
-</div>
-
-<div class="col-rightmid">
+<img src="images/resin/PXL_20201005_022732163.MP.jpg" style="width:20%; border:10px solid; margin-right: 20px" align="left">
 
 The three mold attempts are sitting out to cure overnight before I'll begin the process of removing the die and trying out adding resin. I'm doubtful any of these turned out but what a wonderful way to spend a couple hours!
-
-</div>
 
 <p style="color:grey; font-style:italic;">10/4/2020</p>
 
 ---
 
-</div>
+
+### Pouring the Resin
+
+<img src="images/resin/PXL_20201009_010433085.MP.jpg" style="width:20%; border:10px solid; margin-right: 20px" align="left">
+
+Same recipe as before, still looks beautiful and we now have a matching set of 6!
+
+<p style="color:grey; font-style:italic;">10/8/2020</p>
+
+---
+
+<img src="images/resin/PXL_20201009_010433085.MP.jpg" style="width:20%; border:10px solid; margin-right: 20px" align="left">
+
+Wow this just turned out BEAUTIFUL. 
+
+<img src="images/resin/PXL_20201009_010445950.MP.jpg" style="width:20%; border:10px solid; margin-right: 20px" align="left">
+
+Recipe: 
+
+ - 1 drop 'kiwi' food coloring 
+ - Half of a handle full of green metallic mica powder
+ - Blue flower
+
+Thoroughly mix equal parts of resin for 2 minutes, transfer to second container and add coloring. Mix for an additional minute and use pipettes (two pipette method where one can fill while you use the other one) to fill each mold. Gently insert a flower once 3/4 full. Swish the containers by rotating to encourage air bubbles to exit from difficult places in the mold.  
+
+<p style="color:grey; font-style:italic;">10/7/2020</p>
+
+---
+
+<img src="images/resin/PXL_20201007_004924418.MP.jpg" style="width:20%; border:10px solid; margin-right: 20px" align="left">
+
+The ingredients for pouring the resin: 
+
+ - Dried flowers
+ - Food coloring
+ - Mica powders
+ - EasyCast resin
+ - Dixie cups, pipettes, nitrile glove, facemask (not pictured)
+ 
+<img src="images/resin/PXL_20201008_054415456.MP.jpg" style="width:20%; border:10px solid; margin-right: 20px" align="left">
+ 
+This batch I decided to focus on blues. 
+
+Recipe: 
+
+ - 2 drops blue food coloring 
+ - For 2 of the dice added the green mica powder
+
+Since I layered it in with pure blue on bottom and the blue + mica powder on top it really developed a beautiful layering effect. 
+ 
+<p style="color:grey; font-style:italic;">10/6/2020</p>
+
+---
+
+
+### Polishing
+
+<img src="images/resin/PXL_20201009_010423494.MP.jpg" style="width:20%; border:10px solid; margin-right: 20px" align="left">
+
+Very happy to report success with the "swish". Only 1 out of the three dice has a bubble in the corner disrupting the pattern (and this one is the hardest mold, with the highest point being higher than where the sprue intersects). 
+
+<p style="color:grey; font-style:italic;">10/9/2020</p>
+
+---
+
+<img src="images/resin/PXL_20201008_180158037.MP.jpg" style="width:20%; border:10px solid; margin-right: 20px" align="left">
+
+I've gathered my polishing components: namely various gtis of sandpaper and some car automotive buff. 
+
+<img src="images/resin/PXL_20201008_053345606.MP.jpg" style="width:20%; border:10px solid; margin-right: 20px" align="left">
+
+First step is trimming off the sprue. This was done using a pair of shears (I used wirecutters). The ends come off pretty explosively (think nail trimming but times a million) so definitely be careful which direction you are pointing the die and the sprue. 
+
+All three have some kind of bubble where resin wasn't able to really fill the mold. Maybe doing a "swish" after filling will help next time for preventing this?
+
+<img src="images/resin/PXL_20201008_054320983.MP.jpg" style="width:20%; border:10px solid; margin-right: 20px" align="left">
+
+Here we have the before polishing with all the imperfections and remainder of the sprue. 
+
+<img src="images/resin/PXL_20201008_180436917.MP.jpg" style="width:20%; border:10px solid; margin-right: 20px" align="left">
+
+And here is our after with all the edges buffed out. Looking better, right? I think we can do better though because I did notice that the sides that came out looking good and shiny after being buffedstarted looking cloudy. 
+
+Ideas for next time are to spend more time polishing on the finest grit. Maybe that will help get it super shiny? And spend longer polishing. It's about time for a netflix marathon anyway. 
+
+<p style="color:grey; font-style:italic;">10/8/2020</p>
+
+---
+
+### Rolling the Dice
+
+
 
 ## Resources
 
