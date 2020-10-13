@@ -1,6 +1,172 @@
 ---
 title: "BATTLEBOTS"
 name: "Lisa Anders"
+output:
+  html_document:
+    code_folding: hide
 ---
 
-Hello, Website!
+
+```{r cars, message=FALSE, warning=FALSE}
+library(rvest)
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+library(plotly)
+
+simple <- read_html("http://dataquestio.github.io/web-scraping-pages/simple.html")
+
+simple %>%
+html_nodes("p") %>%
+html_text()
+
+s2019 <- read_html("https://battlebots.com/2019-season-robots/")
+
+body_nodes <- s2019 %>% 
+ html_node("body") %>% 
+ html_children()
+
+level_deeper <- body_nodes %>% 
+ html_children()
+
+robot_2019 <- body_nodes %>% 
+  rvest::html_nodes('body') %>% 
+  xml2::xml_find_all("//span[contains(@class, 'chart-element__robot')]") %>% 
+  rvest::html_text()
+
+
+#<span class="title" itemprop="headline">2019 season robots</span>
+#  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24543"><a href="https://battlebots.com/cast/"><span>Our cast</span
+#<a href="https://battlebots.com/robots/"><span>ROBOTS</span>
+#  <a href="https://battlebots.com/2019-season-robots/"><span>2019 season</span>
+  
+  
+
+
+# library("readxl")
+# library(dplyr)
+# library(tidyverse)
+# library(ggplot2)
+# library(plotly)
+# library(purrr)
+
+# Let's do some webscraping! 
+
+#https://battlebots.com/robot/tombstone/  but only has seasons 1 and 2 
+#https://battlebots.com/robot/tombstone-2019/ has all seasons 
+
+# pull in number of fan likes for the bot/team
+
+
+
+# list of all bots on left
+# Click on bot name, pulls up Battlebots page for that team embedded on the right 
+
+
+
+```
+
+##  {.tabset}
+
+### Season 5
+
+[Link to the Season 5 Rumor Mill at Reddit/r/Battlebots](https://www.reddit.com/r/battlebots/comments/grst5y/the_battlebots_season_5_rumor_mill/)
+
+
+
+
+
+### Top Bots by Weapon Type {.tabset .tabset-fade .tabset-pills}
+
+
+
+
+### Best Fight Videos {.tabset .tabset-fade .tabset-pills}
+
+All rights are owned by Battlebots on ABC
+
+#### Minotaur vs. Bombshell
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/89LYj3d1jCw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+#### Yeti vs. Lock Jaw 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AqM8zxjfV1M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+#### Tombstone vs. Bronco
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/X2vSMMXmGdg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+#### Hypershock + Rake 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UNk5-3fGNqI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+#### Death Roll vs. End Game 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/RrA1XCtUs8I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+#### HUGE vs. Bronco
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jJRskcggTnI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+#### Witch Doctor Vs. actual household items
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DZLs52pRQis" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### Official Battlebots teams 
+
+2019 Battlebots teams
+
+<iframe width='1200px' height='1600px' src='https://battlebots.com/2019-season-robots/9' >
+  <p>Your browser does not support iframes</p>
+</iframe>
+
+### Official Brackets {.tabset .tabset-fade .tabset-pills}
+
+Bracket Results by Season (1-4)
+
+#### 2019 (season 4)
+
+<iframe width='1200px' height='1600px' src='https://battlebots.com/bracket-2019' >
+  <p>Your browser does not support iframes</p>
+</iframe>
+
+#### 2018 (season 3)
+
+<iframe width='1200px' height='1600px' src='https://battlebots.com/bracket-2018' >
+  <p>Your browser does not support iframes</p>
+</iframe>
+
+#### 2016 (season 2)
+
+<iframe width='1200px' height='1600px' src='https://battlebots.com/bracket-s2/' >
+  <p>Your browser does not support iframes</p>
+</iframe>
+
+#### 2015 (season 1)
+
+<iframe width='1200px' height='1600px' src='https://battlebots.com/bracket-s1/' >
+  <p>Your browser does not support iframes</p>
+</iframe>
+
+
+
+### Resources:
+
+Battlebots: 
+
+ - [Official BattleBots page](https://battlebots.com/)
+ - [Reddit Battlebots](http://reddit.com/r/battlebots)
+ - [Season 5 Rumor Mill at Reddit/r/Battlebots](https://www.reddit.com/r/battlebots/comments/grst5y/the_battlebots_season_5_rumor_mill/)
+ - [Combat Robot Resource Guide by Robert Cowan](https://docs.google.com/document/d/1tXSzwzEM2jNGjZ2KYn00ldeHvEru0y3_zlNkVw-F9iI/edit#heading=h.1wa7o4efnhdl)
+ 
+ 
+Resources for building a similar RMarkdown page: 
+
+ - [Creating dynamic tabs in Rmarkdown](https://stackoverflow.com/questions/42631642/creating-dynamic-tabs-in-rmarkdown)
+ - [HTML Special Features: KU CRMDA Markdown](https://cran.r-project.org/web/packages/stationery/vignettes/HTML_special_features.html)
+ - https://github.com/rstudio/rmarkdown/issues/1681
+ - [R: 2 column layout in Rmarkdown with tabset](https://stackoverflow.com/questions/58837184/r-2-column-layout-in-rmarkdown-with-tabset)
+ - [Scraping in R rvest](https://www.dataquest.io/blog/web-scraping-in-r-rvest/)
+ - [Tidy Web Scraping in R Tutorial and Resources](https://towardsdatascience.com/tidy-web-scraping-in-r-tutorial-and-resources-ac9f72b4fe47)

@@ -20,6 +20,7 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
@@ -248,6 +249,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -371,6 +375,14 @@ $(document).ready(function () {
 
 <div class="fluid-row" id="header">
 
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
 
 
 <h1 class="title toc-ignore">BATTLEBOTS</h1>
@@ -378,7 +390,144 @@ $(document).ready(function () {
 </div>
 
 
-<p>Hello, Website!</p>
+<pre class="r"><code>library(rvest)
+
+simple &lt;- read_html(&quot;http://dataquestio.github.io/web-scraping-pages/simple.html&quot;)
+
+simple %&gt;%
+html_nodes(&quot;p&quot;) %&gt;%
+html_text()</code></pre>
+<pre><code>## [1] &quot;Here is some simple content for this page.&quot;</code></pre>
+<pre class="r"><code># library(&quot;readxl&quot;)
+# library(dplyr)
+# library(tidyverse)
+# library(ggplot2)
+# library(plotly)
+# library(purrr)
+
+# Let&#39;s do some webscraping! 
+
+#https://battlebots.com/robot/tombstone/  but only has seasons 1 and 2 
+#https://battlebots.com/robot/tombstone-2019/ has all seasons 
+
+# pull in number of fan likes for the bot/team
+
+
+
+# list of all bots on left
+# Click on bot name, pulls up Battlebots page for that team embedded on the right </code></pre>
+<div id="section" class="section level2 tabset">
+<h2></h2>
+<div id="season-5" class="section level3">
+<h3>Season 5</h3>
+<p><a href="https://www.reddit.com/r/battlebots/comments/grst5y/the_battlebots_season_5_rumor_mill/">Link to the Season 5 Rumor Mill at Reddit/r/Battlebots</a></p>
+</div>
+<div id="top-bots-by-weapon-type" class="section level3 tabset tabset-fade tabset-pills">
+<h3>Top Bots by Weapon Type</h3>
+</div>
+<div id="best-fight-videos" class="section level3 tabset tabset-fade tabset-pills">
+<h3>Best Fight Videos</h3>
+<p>All rights are owned by Battlebots on ABC</p>
+<div id="minotaur-vs.-bombshell" class="section level4">
+<h4>Minotaur vs. Bombshell</h4>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/89LYj3d1jCw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+<div id="yeti-vs.-lock-jaw" class="section level4">
+<h4>Yeti vs. Lock Jaw</h4>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AqM8zxjfV1M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+<div id="tombstone-vs.-bronco" class="section level4">
+<h4>Tombstone vs. Bronco</h4>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/X2vSMMXmGdg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+<div id="hypershock-rake" class="section level4">
+<h4>Hypershock + Rake</h4>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UNk5-3fGNqI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+<div id="death-roll-vs.-end-game" class="section level4">
+<h4>Death Roll vs. End Game</h4>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/RrA1XCtUs8I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+<div id="huge-vs.-bronco" class="section level4">
+<h4>HUGE vs. Bronco</h4>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jJRskcggTnI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+<div id="witch-doctor-vs.-actual-household-items" class="section level4">
+<h4>Witch Doctor Vs. actual household items</h4>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DZLs52pRQis" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+</div>
+<div id="official-battlebots-teams" class="section level3">
+<h3>Official Battlebots teams</h3>
+<p>2019 Battlebots teams</p>
+<iframe width="1200px" height="1600px" src="https://battlebots.com/2019-season-robots/9">
+<p>
+Your browser does not support iframes
+</p>
+</iframe>
+</div>
+<div id="official-brackets" class="section level3 tabset tabset-fade tabset-pills">
+<h3>Official Brackets</h3>
+<p>Bracket Results by Season (1-4)</p>
+<div id="season-4" class="section level4">
+<h4>2019 (season 4)</h4>
+<iframe width="1200px" height="1600px" src="https://battlebots.com/bracket-2019">
+<p>
+Your browser does not support iframes
+</p>
+</iframe>
+</div>
+<div id="season-3" class="section level4">
+<h4>2018 (season 3)</h4>
+<iframe width="1200px" height="1600px" src="https://battlebots.com/bracket-2018">
+<p>
+Your browser does not support iframes
+</p>
+</iframe>
+</div>
+<div id="season-2" class="section level4">
+<h4>2016 (season 2)</h4>
+<iframe width="1200px" height="1600px" src="https://battlebots.com/bracket-s2/">
+<p>
+Your browser does not support iframes
+</p>
+</iframe>
+</div>
+<div id="season-1" class="section level4">
+<h4>2015 (season 1)</h4>
+<iframe width="1200px" height="1600px" src="https://battlebots.com/bracket-s1/">
+<p>
+Your browser does not support iframes
+</p>
+</iframe>
+</div>
+</div>
+<div id="resources" class="section level3">
+<h3>Resources:</h3>
+<p>Battlebots:</p>
+<ul>
+<li><a href="https://battlebots.com/">Official BattleBots page</a></li>
+<li><a href="http://reddit.com/r/battlebots">Reddit Battlebots</a></li>
+<li><a href="https://www.reddit.com/r/battlebots/comments/grst5y/the_battlebots_season_5_rumor_mill/">Season 5 Rumor Mill at Reddit/r/Battlebots</a></li>
+<li><a href="https://docs.google.com/document/d/1tXSzwzEM2jNGjZ2KYn00ldeHvEru0y3_zlNkVw-F9iI/edit#heading=h.1wa7o4efnhdl">Combat Robot Resource Guide by Robert Cowan</a></li>
+</ul>
+<p>Resources for building a similar RMarkdown page:</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/42631642/creating-dynamic-tabs-in-rmarkdown">Creating dynamic tabs in Rmarkdown</a></li>
+<li><a href="https://cran.r-project.org/web/packages/stationery/vignettes/HTML_special_features.html">HTML Special Features: KU CRMDA Markdown</a></li>
+<li><a href="https://github.com/rstudio/rmarkdown/issues/1681" class="uri">https://github.com/rstudio/rmarkdown/issues/1681</a></li>
+<li><a href="https://stackoverflow.com/questions/58837184/r-2-column-layout-in-rmarkdown-with-tabset">R: 2 column layout in Rmarkdown with tabset</a></li>
+<li><a href="https://www.dataquest.io/blog/web-scraping-in-r-rvest/">Scraping in R rvest</a></li>
+</ul>
+</div>
+</div>
 
 
 
@@ -413,6 +562,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
