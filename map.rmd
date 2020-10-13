@@ -1,9 +1,49 @@
 ---
-title: "To wander across this wide wide world"
+title: ""
 name: "Lisa Anders"
 ---
 
-This page is under development, come check it again later
+## What are you looking for? {.tabset}
+
+---
+
+### Hiking
+
+<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1Mv6AeXfYMUqa4GM-h4n_04P07Z07AoLt" width="640" height="480"></iframe>
+
+--- 
+
+### Food
+
+<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1uUYvwjkox7eGdAuLrPNmmBMfx_oRsuq6" width="640" height="480"></iframe>
+
+--- 
+
+### Roadside Attractions 
+
+<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1dqtzkAyIi666_2zloAvTcc2B8PRFt95u" width="640" height="480"></iframe>
+
+--- 
+
+### Tours (AKA "How It's Made")
+
+<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1JgbWPMd5iMfrAe92mAiLLAKcktkBSfPw" width="640" height="480"></iframe>
+
+--- 
+
+### Music Venues
+
+<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1naGG2y-HejDrxXwb5JVVeg1K-XWOu-9Z" width="640" height="480"></iframe>
+
+--- 
+
+## Notes
+
+This was possible by using [Google Takeout](https://takeout.google.com/settings/takeout) to export my saved places from [Google Maps](https://www.google.com/maps/) and import them into [Google My Maps](https://www.google.com/maps/d/u/0/?dg=feature). From there I was able to create a map, enable it to be public, and get the embed info for embedding into this webpage. 
+
+Reference: https://support.google.com/maps/thread/5149639?hl=en (huge thanks to user Facu Pola for finding the slightly hidden option for downloading saved places!)
+
+
 
 ```{r eval=FALSE,echo=FALSE}
 
@@ -12,5 +52,9 @@ This page is under development, come check it again later
 #default, cerulean, journal, flatly, darkly, readable, spacelab, united, cosmo, lumen, paper, sandstone, simplex, and yeti.
 #Don't like: sandstone (dark header), cerulean(very blue), readable(almost but don't like blue text),yeti (dark header), flatly (dark header), darkly (blueheader but dark theme), united (red), cosmo (black header)
 #Very nice: paper, journal (can't put my finger on it but it is kinda goofy), simplex (but took longest to load), spacelab (has light grey header),lumen (light header)
+
+library(json)
+
+
 ```
 

@@ -1,7 +1,187 @@
 ---
-title: "Rav4 Camper Conversion"
+title: "Rav Majal AKA: How to turn your car into a cheap camper"
 name: "Lisa Anders"
 ---
 
-This page is under development, come check it again later
+<style>
+table, th, td {
+}
+
+th, td {
+  padding: 10px;
+}
+</style>
+
+<div style="margin-bottom:100px; margin-top:100px;">
+
+![](images/ravMajal/Picture4.png) ![](images/ravMajal/Picture5.png)
+
+</div>
+<div style="margin-bottom:100px;">
+
+## Adventures {.tabset}
+
+### Big Sur - July 2020
+
+“On soft Spring nights I'll stand in the yard under the stars - Something good will come out of all things yet - And it will be golden and eternal just like that - There's no need to say another word.” -Big Sur by Jack Kerouac
+
+“Woke up today surrounded by nature, and laughed in the face of the swarm of mosquitoes. Total cost for dispersed camping: priceless (by which I mean free, national forests are awesome). Really need to do something so I’m not cooking food on the ground or on the edge of the sleeping platform though” (No cooking table yet)
+
+![](images/ravMajal/Picture1.jpg) ![](images/ravMajal/Picture16.jpg) 
+
+--- 
+
+</div>
+<div style="margin-bottom:100px;">
+
+## Inspiration
+
+Placeholder for my brother
+
+Placeholder for growing up in Alaska in nature
+
+</div>
+<div style="margin-bottom:100px;">
+
+## Vanlife: Home is where you park it
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/tN4WHTGWlHY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+</div>
+<div style="margin-bottom:100px;">
+
+## The cost of vanlife: the conversion
+
+![](images/ravMajal/Picture17.png)
+
+Assumptions: 
+
+ - Cost does not include cost to purchase the van (which on the low end is 37,000 for a 2015 Sprinter)
+
+Data: https://www.curbed.com/2018/9/24/17895974/camper-van-conversion-best-for-sale-custom-vanlife, https://www.thewaywardhome.com/van-conversion-companies/ 
+
+</div>
+<div style="margin-bottom:100px;">
+
+## The cost of vanlife: the gas
+
+![](images/ravMajal/Picture16.png)
+
+Assumptions: 
+
+ - Gas cost: $2.5
+ - Number of trips: 10
+ - Distance of trip: 150 miles (75 miles one way to Anza Borrego)
+ 
+In addition most vans don’t have AWD, meaning that reaching that magical dispersed camping spot might be a terrifying and expensive endeavor!
+
+</div>
+<div style="margin-bottom:100px;">
+
+## The design process
+
+Do you need a bathroom?
+
+How big a bed do you need?
+
+How will you be cooking?
+
+Where will you get (and store) your water?
+
+How much storage do you need?
+
+What’s your budget?
+
+What’s your comfort level with a jigsaw and drill?
+
+</div>
+<div style="margin-bottom:100px;">
+
+## No going back: Removal of the backseats
+
+<table style="width: 100%;">
+    <colgroup>
+       <col span="1" style="width: 15%;">
+       <col span="1" style="width: 85%;">
+    </colgroup>
+<tr>
+<td>
+![](images/ravMajal/Picture15.jpg) 
+</td>
+<td>
+This added an additional XX inches of room to the back of the car -> Making it possible to sit in the back instead of needing to crouch! 
+
+![](images/ravMajal/Picture13.jpg) ![](images/ravMajal/Picture14.jpg)
+
+</td>
+</tr>
+</table>
+
+</div>
+<div style="margin-bottom:100px;">
+
+## Battery platform: measure twice, cut once
+
+Constructed mockup using cardboard to get the right fit (cars have tricky edges)
+
+![](images/ravMajal/Picture10.jpg) ![](images/ravMajal/Picture11.jpg) ![](images/ravMajal/Picture12.jpg)
+
+</div>
+<div style="margin-bottom:100px;">
+
+## Construction of the sleeping platform
+
+V1: strong proof of concept without storage and using delicate cardboard as a lid
+V2: Added feature to convert to a bench!
+
+![](images/ravMajal/Picture9.jpg)
+
+</div>
+<div style="margin-bottom:100px;">
+
+## Construction of the cooking table
+
+Inspired by my brothers cooking table
+
+ - Hooks onto hatch latch for secure connection
+ - Indent for stove to securely hold in place
+ - Added drawer for storage (and to make my brother jealous)
+
+![](images/ravMajal/Picture6.jpg) ![](images/ravMajal/Picture7.jpg) ![](images/ravMajal/Picture8.jpg)
+
+</div>
+<div style="margin-bottom:100px;">
+
+## Shelves with walls that aren’t square
+ 
+Upcoming! 
+ 
+ - Image of the before
+ - Image of the after
+ - Image loaded with stuff
+ - Dimensions? 
+
+</div>
+<div style="margin-bottom:100px;">
+
+## Adding the final frills
+
+Upcoming!
+
+ - Placeholders for lights
+ - Body board storage
+ - Gear storage 
+
+</div>
+<div style="margin-bottom:100px;">
+
+## Resources 
+
+ - www.reddit.com/r/priusdwellers/
+ - https://vacayvans.com/worst-part-about-solo-vanlife-full-time-travel/
+
+</div>
+
+
+
 
