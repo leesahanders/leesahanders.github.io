@@ -508,6 +508,7 @@ library(&quot;rnaturalearth&quot;)
 library(&quot;rnaturalearthdata&quot;)
 library(htmlwidgets)
 library(webshot)
+library(tidygeocoder)
 
 
 # Set URL list
@@ -632,7 +633,7 @@ my_wordcloud &lt;- wordcloud2(data=type_frequency, size = 0.5, shape = &#39;pent
 
 saveWidget(my_wordcloud, &quot;tmp.html&quot;, selfcontained = F)
 webshot(&quot;tmp.html&quot;, &quot;./images/wc1.png&quot;, delay = 5)</code></pre>
-<p><img src="battlebots_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><img src="battlebots_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <pre class="r"><code>#wordcloud2(demoFreq, color = &quot;random-light&quot;, backgroundColor = &quot;grey&quot;)
 
 # https://towardsdatascience.com/create-a-word-cloud-with-r-bde3e7422e8a
@@ -648,7 +649,7 @@ webshot(&quot;tmp.html&quot;, &quot;./images/wc1.png&quot;, delay = 5)</code></p
 my_wordcloud &lt;- wordcloud2(data=job_frequency, size = 0.25, color=&#39;random-dark&#39;)
 saveWidget(my_wordcloud, &quot;tmp.html&quot;, selfcontained = F)
 webshot(&quot;tmp.html&quot;, &quot;./images/wc2.png&quot;, delay = 5)</code></pre>
-<p><img src="battlebots_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="battlebots_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <pre class="r"><code>#wordcloud2(demoFreq, color = &quot;random-light&quot;, backgroundColor = &quot;grey&quot;)
 
 # https://towardsdatascience.com/create-a-word-cloud-with-r-bde3e7422e8a
@@ -656,77 +657,39 @@ webshot(&quot;tmp.html&quot;, &quot;./images/wc2.png&quot;, delay = 5)</code></p
 </div>
 <div id="map-of-builder-locations" class="section level3">
 <h3>Map of Builder Locations</h3>
-<pre class="r"><code># library(rgeo)
-
-# 
-# world &lt;- ne_countries(scale = &quot;medium&quot;, returnclass = &quot;sf&quot;)
-# class(world)
-# 
-# 
-# map &lt;- battlebotsinfo %&gt;%
-#   select(Robot, Hometown) 
-# 
-# world &lt;- map_data(&quot;world&quot;) 
-# 
-# data &lt;- world.cities %&gt;% filter(country.etc==&quot;UK&quot;)
-# 
-# 
-# data &lt;- data %&gt;%
-#   arrange(pop) %&gt;%
-#   mutate( name=factor(name, unique(name))) %&gt;%
-#   mutate( mytext=paste(
-#     &quot;City: &quot;, name, &quot;\n&quot;, 
-#     &quot;Population: &quot;, pop, sep=&quot;&quot;)
-#   )
-# 
-# p &lt;- ggplot() +
-#   geom_polygon(data = world, aes(x=long, y = lat, group = group), fill=&quot;grey&quot;, alpha=0.3) +
-#   geom_point( data=data, aes(x=long, y=lat, text=mytext, alpha=pop)) +
-#   #geom_point(aes(x=long, y=lat, size=pop, color=pop, text=mytext, alpha=pop) ) +
-#   geom_text_repel( data=data %&gt;% arrange(pop) %&gt;% tail(10), aes(x=long, y=lat, label=name), size=5) +
-#   geom_point( data=data %&gt;% arrange(pop) %&gt;% tail(10), aes(x=long, y=lat), color=&quot;red&quot;, size=3) +
-#   theme_void() + ylim(50,59) + coord_map() +
-#   theme(legend.position=&quot;none&quot;)
-#  
-# pp &lt;- ggplotly(p, tooltip=&quot;text&quot;)
-# pp
-# 
-
-
-
-# mygggmap &lt;- get_map(location = &quot;United States&quot;, zoom = 4)
-# g &lt;- ggmap(myggmap)
-# 
-# g &lt;- g + geom_density2d(data = citydata, aes(x = lon, y = lat))
-# 
-# geocode(&quot;SEATTLE&quot;)
-# 
-# UK &lt;- map_data(&quot;world&quot;) %&gt;% filter(region==&quot;UK&quot;)
-# 
-# data &lt;- world.cities %&gt;% filter(country.etc==&quot;UK&quot;)
-# 
-# 
-# data &lt;- data %&gt;%
-#   arrange(pop) %&gt;%
-#   mutate( name=factor(name, unique(name))) %&gt;%
-#   mutate( mytext=paste(
-#     &quot;City: &quot;, name, &quot;\n&quot;, 
-#     &quot;Population: &quot;, pop, sep=&quot;&quot;)
-#   )
-# 
-# p &lt;- ggplot() +
-#   geom_polygon(data = UK, aes(x=long, y = lat, group = group), fill=&quot;grey&quot;, alpha=0.3) +
-#   geom_point( data=data, aes(x=long, y=lat, text=mytext, alpha=pop)) +
-#   #geom_point(aes(x=long, y=lat, size=pop, color=pop, text=mytext, alpha=pop) ) +
-#   geom_text_repel( data=data %&gt;% arrange(pop) %&gt;% tail(10), aes(x=long, y=lat, label=name), size=5) +
-#   geom_point( data=data %&gt;% arrange(pop) %&gt;% tail(10), aes(x=long, y=lat), color=&quot;red&quot;, size=3) +
-#   theme_void() + ylim(50,59) + coord_map() +
-#   theme(legend.position=&quot;none&quot;)
-#  
-# pp &lt;- ggplotly(p, tooltip=&quot;text&quot;)
-# pp
+<pre class="r"><code>#Load location data
+if(file.exists(&quot;./files/battlebotslocation.csv&quot;)){
+  message(&quot;Loading saved files&quot;)
   
-#https://stackoverflow.com/questions/29037851/how-do-i-plot-us-cities-using-ggplot
+  bbmap = read.csv(&quot;./files/battlebotslocation.csv&quot;, stringsAsFactors=FALSE)
+} else {
+  message(&quot;Generating battlebots location files&quot;)
+  
+  #Set up the API key for google 
+  #Go to: https://cloud.google.com/maps-platform/
+  #register_google(key = &quot;AIzaSyDmZUFZ-RzL0mnpO9-CELahrnEWdJwYqDw&quot;, write = TRUE)
+  
+  bbmap &lt;- battlebotsinfo %&gt;%
+    select(Robot, Hometown) %&gt;%
+    mutate(Team = paste(&quot;Team&quot;, Robot, &quot;, from&quot;, Hometown)) %&gt;%
+    mutate_geocode(Hometown)
+  
+  write.csv(bbmap, &quot;./files/battlebotslocation.csv&quot;)
+}
+  
+world &lt;- ne_countries(scale = &quot;medium&quot;, returnclass = &quot;sf&quot;)
+
+p &lt;- ggplot(data = world) + 
+  geom_sf(color = &quot;black&quot;, fill = &quot;lightgray&quot;) +
+  xlab(&quot;Longitude&quot;) + ylab(&quot;Latitude&quot;) +
+  geom_point( data=bbmap, aes(x=lon, y=lat, text=Team), color=&quot;red&quot;, size=1) +
+  ggtitle(&quot;Battlebots Hometowns World map&quot;, subtitle = paste0(&quot;(&quot;, length(unique(bbmap$Robot)), &quot; teams)&quot;))
+
+pp &lt;- ggplotly(p, tooltip=&quot;text&quot;)
+#pp
+p</code></pre>
+<p><img src="battlebots_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>#https://stackoverflow.com/questions/29037851/how-do-i-plot-us-cities-using-ggplot
 #https://stackoverflow.com/questions/22752009/plot-on-ggmap-by-using-city-and-state
 #https://towardsdatascience.com/plotting-spatial-data-in-r-a38a405a07f1
 #https://cran.r-project.org/web/packages/usmap/vignettes/advanced-mapping.html 
@@ -735,7 +698,10 @@ webshot(&quot;tmp.html&quot;, &quot;./images/wc2.png&quot;, delay = 5)</code></p
 #https://www.r-graph-gallery.com/330-bubble-map-with-ggplot2.html
 #http://yluo86.github.io/rmaps
 #https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html
-#https://www.statsandr.com/blog/world-map-of-visited-countries-in-r/</code></pre>
+#https://www.statsandr.com/blog/world-map-of-visited-countries-in-r/
+#https://cran.r-project.org/web/packages/tidygeocoder/vignettes/tidygeocoder.html
+#https://towardsdatascience.com/reverse-geocoding-in-r-f7fe4b908355
+#https://stackoverflow.com/questions/13905098/how-to-get-the-longitude-and-latitude-coordinates-from-a-city-name-and-country-i</code></pre>
 </div>
 </div>
 <div id="resources" class="section level2">

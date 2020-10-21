@@ -91,7 +91,7 @@ Bracket Results by Season (1-4)
 
 Below is my attempt at diving deep into the world of Battlebots to understand what makes some bots more successful than others. All data is from the Battlebots official website, scraped from the web using the Rvest R package developed by Hadley Wickam. 
 
-```{r cars, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 library(rvest)
 library(dplyr)
 library(tidyverse)
@@ -110,6 +110,7 @@ library("rnaturalearth")
 library("rnaturalearthdata")
 library(htmlwidgets)
 library(webshot)
+library(tidygeocoder)
 
 
 # Set URL list
@@ -269,76 +270,39 @@ webshot("tmp.html", "./images/wc2.png", delay = 5)
 
 ### Map of Builder Locations
 
-```{r}
-# library(rgeo)
+```{r, message=FALSE, warning=FALSE}
 
-# 
-# world <- ne_countries(scale = "medium", returnclass = "sf")
-# class(world)
-# 
-# 
-# map <- battlebotsinfo %>%
-#   select(Robot, Hometown) 
-# 
-# world <- map_data("world") 
-# 
-# data <- world.cities %>% filter(country.etc=="UK")
-# 
-# 
-# data <- data %>%
-#   arrange(pop) %>%
-#   mutate( name=factor(name, unique(name))) %>%
-#   mutate( mytext=paste(
-#     "City: ", name, "\n", 
-#     "Population: ", pop, sep="")
-#   )
-# 
-# p <- ggplot() +
-#   geom_polygon(data = world, aes(x=long, y = lat, group = group), fill="grey", alpha=0.3) +
-#   geom_point( data=data, aes(x=long, y=lat, text=mytext, alpha=pop)) +
-#   #geom_point(aes(x=long, y=lat, size=pop, color=pop, text=mytext, alpha=pop) ) +
-#   geom_text_repel( data=data %>% arrange(pop) %>% tail(10), aes(x=long, y=lat, label=name), size=5) +
-#   geom_point( data=data %>% arrange(pop) %>% tail(10), aes(x=long, y=lat), color="red", size=3) +
-#   theme_void() + ylim(50,59) + coord_map() +
-#   theme(legend.position="none")
-#  
-# pp <- ggplotly(p, tooltip="text")
-# pp
-# 
+#Load location data
+if(file.exists("./files/battlebotslocation.csv")){
+  message("Loading saved files")
+  
+  bbmap = read.csv("./files/battlebotslocation.csv", stringsAsFactors=FALSE)
+} else {
+  message("Generating battlebots location files")
+  
+  #Set up the API key for google 
+  #Go to: https://cloud.google.com/maps-platform/
+  #register_google(key = "AIzaSyDmZUFZ-RzL0mnpO9-CELahrnEWdJwYqDw", write = TRUE)
+  
+  bbmap <- battlebotsinfo %>%
+    select(Robot, Hometown) %>%
+    mutate(Team = paste("Team", Robot, ", from", Hometown)) %>%
+    mutate_geocode(Hometown)
+  
+  write.csv(bbmap, "./files/battlebotslocation.csv")
+}
+  
+world <- ne_countries(scale = "medium", returnclass = "sf")
 
+p <- ggplot(data = world) + 
+  geom_sf(color = "black", fill = "lightgray") +
+  xlab("Longitude") + ylab("Latitude") +
+  geom_point( data=bbmap, aes(x=lon, y=lat, text=Team), color="red", size=1) +
+  ggtitle("Battlebots Hometowns World map", subtitle = paste0("(", length(unique(bbmap$Robot)), " teams)"))
 
-
-# mygggmap <- get_map(location = "United States", zoom = 4)
-# g <- ggmap(myggmap)
-# 
-# g <- g + geom_density2d(data = citydata, aes(x = lon, y = lat))
-# 
-# geocode("SEATTLE")
-# 
-# UK <- map_data("world") %>% filter(region=="UK")
-# 
-# data <- world.cities %>% filter(country.etc=="UK")
-# 
-# 
-# data <- data %>%
-#   arrange(pop) %>%
-#   mutate( name=factor(name, unique(name))) %>%
-#   mutate( mytext=paste(
-#     "City: ", name, "\n", 
-#     "Population: ", pop, sep="")
-#   )
-# 
-# p <- ggplot() +
-#   geom_polygon(data = UK, aes(x=long, y = lat, group = group), fill="grey", alpha=0.3) +
-#   geom_point( data=data, aes(x=long, y=lat, text=mytext, alpha=pop)) +
-#   #geom_point(aes(x=long, y=lat, size=pop, color=pop, text=mytext, alpha=pop) ) +
-#   geom_text_repel( data=data %>% arrange(pop) %>% tail(10), aes(x=long, y=lat, label=name), size=5) +
-#   geom_point( data=data %>% arrange(pop) %>% tail(10), aes(x=long, y=lat), color="red", size=3) +
-#   theme_void() + ylim(50,59) + coord_map() +
-#   theme(legend.position="none")
-#  
-# pp <- ggplotly(p, tooltip="text")
-# pp
+pp <- ggplotly(p, tooltip="text")
+#pp
+p
   
 #https://stackoverflow.com/questions/29037851/how-do-i-plot-us-cities-using-ggplot
 #https://stackoverflow.com/questions/22752009/plot-on-ggmap-by-using-city-and-state
@@ -350,6 +314,9 @@ webshot("tmp.html", "./images/wc2.png", delay = 5)
 #http://yluo86.github.io/rmaps
 #https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html
 #https://www.statsandr.com/blog/world-map-of-visited-countries-in-r/
+#https://cran.r-project.org/web/packages/tidygeocoder/vignettes/tidygeocoder.html
+#https://towardsdatascience.com/reverse-geocoding-in-r-f7fe4b908355
+#https://stackoverflow.com/questions/13905098/how-to-get-the-longitude-and-latitude-coordinates-from-a-city-name-and-country-i
 ```
 
 ## Resources
