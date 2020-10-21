@@ -18,43 +18,7 @@ th, td {
 ## Experiments {.tabset}
 
 ### Silicone Mold
-<table style="width: 100%;">
-    <colgroup>
-       <col span="1" style="width: 35%;">
-       <col span="1" style="width: 65%;">
-    </colgroup>
-<tr>
-<td>
-<img src="images/resin/PXL_20201005_161849020.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
-</td>
-<td>
-Try 2 of creating the silicone mold. I was able to use the lessons from last time and create a mold with the sprue large enough to get a good amount in there while still having it be small enough that hopefully polishing won't be horrible. 
-</td>
-</tr>
-<tr>
-<td>
-<img src="images/resin/PXL_20201005_163835042.MP_2.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
-</td>
-<td>
-Interesting enough I think that the mixture is very sensitive to the quantities of each part. While I was very careful to match the volumes using my trusty 1/2 cup measuring spoon we can notice a distinct change in color. Despite this change in color it did successfully set and it doesn't feel different and will do nicely as a mold. 
-</td>
-</tr>
-<tr>
-<td>
-<img src="images/resin/PXL_20201005_160755962.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
-</td>
-<td>
-I'm a little concerned with my splits in the mold for removing the pieces. Hopefully it will seal up well enough that we won't have the resin leaking out or really large obvious lines. 
-</td>
-</tr>
-<tr>
-<td>
-</td>
-<td><p style="color:grey; font-style:italic;" align="right">10/5-6/2020</p></td>
-</tr>
-</table>
 
----
 
 <table style="width: 100%">
     <colgroup>
@@ -115,30 +79,48 @@ The three mold attempts are sitting out to cure overnight before I'll begin the 
 ---
 
 
+
+<table style="width: 100%;">
+    <colgroup>
+       <col span="1" style="width: 35%;">
+       <col span="1" style="width: 65%;">
+    </colgroup>
+<tr>
+<td>
+<img src="images/resin/PXL_20201005_161849020.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+Try 2 of creating the silicone mold. I was able to use the lessons from last time and create a mold with the sprue large enough to get a good amount in there while still having it be small enough that hopefully polishing won't be horrible. 
+</td>
+</tr>
+<tr>
+<td>
+<img src="images/resin/PXL_20201005_163835042.MP_2.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+Interesting enough I think that the mixture is very sensitive to the quantities of each part. While I was very careful to match the volumes using my trusty 1/2 cup measuring spoon we can notice a distinct change in color. Despite this change in color it did successfully set and it doesn't feel different and will do nicely as a mold. 
+</td>
+</tr>
+<tr>
+<td>
+<img src="images/resin/PXL_20201005_160755962.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+I'm a little concerned with my splits in the mold for removing the pieces. Hopefully it will seal up well enough that we won't have the resin leaking out or really large obvious lines. 
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td><p style="color:grey; font-style:italic;" align="right">10/5-6/2020</p></td>
+</tr>
+</table>
+
+---
+
+
 ### Pouring the Resin
 
-<table style="width: 100%">
-    <colgroup>
-       <col span="1" style="width: 35%;">
-       <col span="1" style="width: 65%;">
-    </colgroup>
-<tr>
-<td>
-<img src="images/resin/PXL_20201010_030648486.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
-</td>
-<td>
-Same recipe as before, still looks beautiful and we now have a matching set of 6!
-</td>
-</tr>
-<tr>
-<td>
-</td>
-<td><p style="color:grey; font-style:italic;" align="right">10/8/2020</p></td>
-</tr>
-</table>
-
----
-
 <table style="width: 100%" cellpadding="5">
     <colgroup>
        <col span="1" style="width: 35%;">
@@ -146,43 +128,7 @@ Same recipe as before, still looks beautiful and we now have a matching set of 6
     </colgroup>
 <tr>
 <td>
-<img src="images/resin/PXL_20201009_010433085.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
-</td>
-<td>
-Wow this just turned out BEAUTIFUL. 
-</td>
-</tr>
-<tr>
-<td>
-<img src="images/resin/PXL_20201009_010445950.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
-</td>
-<td>
-Recipe: 
-
- - 1 drop 'kiwi' food coloring 
- - Half of a handle full of green metallic mica powder
- - Blue flower
-
-Thoroughly mix equal parts of resin for 2 minutes, transfer to second container and add coloring. Mix for an additional minute and use pipettes (two pipette method where one can fill while you use the other one) to fill each mold. Gently insert a flower once 3/4 full. Swish the containers by rotating to encourage air bubbles to exit from difficult places in the mold.  
-</td>
-<tr>
-<tr>
-<td>
-</td>
-<td><p style="color:grey; font-style:italic;" align="right">10/7/2020</p></td>
-</tr>
-</table>
-
----
-
-<table style="width: 100%" cellpadding="5">
-    <colgroup>
-       <col span="1" style="width: 35%;">
-       <col span="1" style="width: 65%;">
-    </colgroup>
-<tr>
-<td>
-<img src="images/resin/PXL_20201009_010423494.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+<img src="images/resin/PXL_20201007_004924418.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
 </td>
 <td>
 The ingredients for pouring the resin: 
@@ -218,30 +164,67 @@ Since I layered it in with pure blue on bottom and the blue + mica powder on top
 
 ---
 
-
-### Polishing
-
-<table style="width: 100%" border-spacing = "5" border-padding = "5">
+<table style="width: 100%" cellpadding="5">
     <colgroup>
        <col span="1" style="width: 35%;">
        <col span="1" style="width: 65%;">
     </colgroup>
 <tr>
 <td>
-<img src="images/resin/PXL_20201007_004924418.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+<img src="images/resin/PXL_20201009_010445950.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
 </td>
 <td>
-Very happy to report success with the "swish". Only 1 out of the three dice has a bubble in the corner disrupting the pattern (and this one is the hardest mold, with the highest point being higher than where the sprue intersects). 
+Recipe: 
+
+ - 1 drop 'kiwi' food coloring 
+ - Half of a handle full of green metallic mica powder
+ - Blue flower
+
+Thoroughly mix equal parts of resin for 2 minutes, transfer to second container and add coloring. Mix for an additional minute and use pipettes (two pipette method where one can fill while you use the other one) to fill each mold. Gently insert a flower once 3/4 full. Swish the containers by rotating to encourage air bubbles to exit from difficult places in the mold.  
+</td>
+</tr>
+<tr>
+<td>
+<img src="images/resin/PXL_20201009_010433085.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+Wow this just turned out BEAUTIFUL. 
 </td>
 </tr>
 <tr>
 <td>
 </td>
-<td><p style="color:grey; font-style:italic;" align="right">10/9/2020</p></td>
+<td><p style="color:grey; font-style:italic;" align="right">10/7/2020</p></td>
 </tr>
 </table>
 
 ---
+
+
+<table style="width: 100%">
+    <colgroup>
+       <col span="1" style="width: 35%;">
+       <col span="1" style="width: 65%;">
+    </colgroup>
+<tr>
+<td>
+<img src="images/resin/PXL_20201010_030648486.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+Same recipe as before, still looks beautiful and we now have a matching set of 6!
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td><p style="color:grey; font-style:italic;" align="right">10/8/2020</p></td>
+</tr>
+</table>
+
+---
+
+
+### Polishing
 
 <table style="width: 100%" >
     <colgroup>
@@ -253,7 +236,7 @@ Very happy to report success with the "swish". Only 1 out of the three dice has 
 <img src="images/resin/PXL_20201008_180158037.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
 </td>
 <td>
-I've gathered my polishing components: namely various gtis of sandpaper and some car automotive buff. 
+I've gathered my polishing components: namely various grits of sandpaper and some car automotive buff. 
 </td>
 </tr>
 <tr>
@@ -294,11 +277,35 @@ Ideas for next time are to spend more time polishing on the finest grit. Maybe t
 
 ---
 
+<table style="width: 100%" border-spacing = "5" border-padding = "5">
+    <colgroup>
+       <col span="1" style="width: 35%;">
+       <col span="1" style="width: 65%;">
+    </colgroup>
+<tr>
+<td>
+<img src="images/resin/PXL_20201009_010423494.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+Very happy to report success with the "swish". Only 1 out of the three dice has a bubble in the corner disrupting the pattern (and this one is the hardest mold, with the highest point being higher than where the sprue intersects). 
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td><p style="color:grey; font-style:italic;" align="right">10/9/2020</p></td>
+</tr>
+</table>
+
+---
+
+
+
 ### Rolling the Dice
 
 Now that our unique dice have been cured, painted, and polished it was time to put them to the test. Sure they look pretty (minus the occasional bubble and polish mark) but can they ROLL? 
 
-Here, I am proud to present to you, are our candidates for the roll of!
+Here, I am proud to present to you, are our candidates for the roll off!
 
 <img src="images/resin/PXL_20201010_033639772.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="center">
 

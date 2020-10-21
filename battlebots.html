@@ -390,40 +390,25 @@ $(document).ready(function () {
 </div>
 
 
-<pre class="r"><code>library(rvest)
-
-simple &lt;- read_html(&quot;http://dataquestio.github.io/web-scraping-pages/simple.html&quot;)
-
-simple %&gt;%
-html_nodes(&quot;p&quot;) %&gt;%
-html_text()</code></pre>
-<pre><code>## [1] &quot;Here is some simple content for this page.&quot;</code></pre>
-<pre class="r"><code># library(&quot;readxl&quot;)
-# library(dplyr)
-# library(tidyverse)
-# library(ggplot2)
-# library(plotly)
-# library(purrr)
-
-# Let&#39;s do some webscraping! 
-
-#https://battlebots.com/robot/tombstone/  but only has seasons 1 and 2 
-#https://battlebots.com/robot/tombstone-2019/ has all seasons 
-
-# pull in number of fan likes for the bot/team
-
-
-
-# list of all bots on left
-# Click on bot name, pulls up Battlebots page for that team embedded on the right </code></pre>
-<div id="section" class="section level2 tabset">
-<h2></h2>
-<div id="season-5" class="section level3">
-<h3>Season 5</h3>
-<p><a href="https://www.reddit.com/r/battlebots/comments/grst5y/the_battlebots_season_5_rumor_mill/">Link to the Season 5 Rumor Mill at Reddit/r/Battlebots</a></p>
+<div id="what-is-battlebots" class="section level2 tabset">
+<h2>What is Battlebots?</h2>
+<div id="about-battlebots" class="section level3">
+<h3>About Battlebots</h3>
+<ul>
+<li><a href="https://battlebots.com/">Official BattleBots page</a></li>
+<li><a href="http://reddit.com/r/battlebots">Reddit Battlebots</a></li>
+<li><a href="https://www.reddit.com/r/battlebots/comments/grst5y/the_battlebots_season_5_rumor_mill/">Season 5 Rumor Mill at Reddit/r/Battlebots</a></li>
+<li><a href="https://docs.google.com/document/d/1tXSzwzEM2jNGjZ2KYn00ldeHvEru0y3_zlNkVw-F9iI/edit#heading=h.1wa7o4efnhdl">Combat Robot Resource Guide by Robert Cowan</a></li>
+</ul>
 </div>
-<div id="top-bots-by-weapon-type" class="section level3 tabset tabset-fade tabset-pills">
-<h3>Top Bots by Weapon Type</h3>
+<div id="official-battlebots-teams" class="section level3">
+<h3>2019 Official Battlebots Teams</h3>
+<p>2019 Battlebots teams</p>
+<iframe width="1200px" height="1600px" src="https://battlebots.com/2019-season-robots/9">
+<p>
+Your browser does not support iframes
+</p>
+</iframe>
 </div>
 <div id="best-fight-videos" class="section level3 tabset tabset-fade tabset-pills">
 <h3>Best Fight Videos</h3>
@@ -464,15 +449,6 @@ html_text()</code></pre>
 </iframe>
 </div>
 </div>
-<div id="official-battlebots-teams" class="section level3">
-<h3>Official Battlebots teams</h3>
-<p>2019 Battlebots teams</p>
-<iframe width="1200px" height="1600px" src="https://battlebots.com/2019-season-robots/9">
-<p>
-Your browser does not support iframes
-</p>
-</iframe>
-</div>
 <div id="official-brackets" class="section level3 tabset tabset-fade tabset-pills">
 <h3>Official Brackets</h3>
 <p>Bracket Results by Season (1-4)</p>
@@ -507,10 +483,263 @@ Your browser does not support iframes
 Your browser does not support iframes
 </p>
 </iframe>
+<hr />
 </div>
 </div>
-<div id="resources" class="section level3">
-<h3>Resources:</h3>
+</div>
+<div id="battlebots-analysis" class="section level2">
+<h2>Battlebots Analysis</h2>
+<p>Below is my attempt at diving deep into the world of Battlebots to understand what makes some bots more successful than others. All data is from the Battlebots official website, scraped from the web using the Rvest R package developed by Hadley Wickam.</p>
+<pre class="r"><code>library(rvest)
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+library(plotly)
+library(data.table)
+library(stringr)
+#devtools::install_github(&quot;lchiffon/wordcloud2&quot;)
+library(wordcloud2)
+library(RColorBrewer)
+library(ggmap)
+library(maps)
+library(ggrepel)
+library(sf)
+library(&quot;rnaturalearth&quot;)
+library(&quot;rnaturalearthdata&quot;)
+library(htmlwidgets)
+library(webshot)
+
+
+# Set URL list
+#urls = c(&quot;https://battlebots.com/robot/yeti-2019/&quot;)
+#url &lt;- &quot;https://battlebots.com/robot/yeti-2019/&quot;
+
+# Check if data already exists, if not download it
+if(file.exists(&quot;./files/battlebotsinfo.csv&quot;)){
+  message(&quot;Loading saved files&quot;)
+  
+  battlebotsinfo = read.csv(&quot;./files/battlebotsinfo.csv&quot;, stringsAsFactors=FALSE)
+  battlebotsmatch = read.csv(&quot;./files/battlebotsmatch.csv&quot;, stringsAsFactors=FALSE)
+  battlebotsstat = read.csv(&quot;./files/battlebotsstat.csv&quot;, stringsAsFactors=FALSE)
+  
+} else {
+  message(&quot;Generating battlebots data files&quot;)
+  
+  urls = read.csv(&quot;./files/battlebotsurls.csv&quot;, stringsAsFactors=FALSE)
+  
+  for( i in 1:nrow(urls) ){
+    url = urls[i,1]
+    
+    print(paste0(&quot;Reading &quot;, i, &quot; of &quot;, nrow(urls), &quot;: &quot;, url))
+    
+    # Read info and arrange into table 
+    # (note that this isn&#39;t actually a table in the html source so we had to jump through some hoops to make that happen)
+    info &lt;- read_html(url) %&gt;%
+      html_nodes(&quot;.info-grid&quot;) %&gt;%
+      html_text()
+    
+    info_df_tmp &lt;- map(info, function(x) {
+      tibble(text = unlist(str_split(x, pattern = &quot;\\n&quot;))) %&gt;%
+        rowid_to_column(var = &quot;line&quot;)
+    })
+    
+    info_df &lt;- bind_rows(info_df_tmp, .id = &quot;page&quot;) 
+    
+    # Trim off leading whitespace
+    info_trim &lt;- slice(info_df, which.max(text == &quot;Robot:&quot;) : n()) %&gt;%
+      select(text)
+    
+    # Split into multiple rows , remediate any cases where Values are part of the Record
+    info_split &lt;- info_trim %&gt;%
+      mutate(text = str_trim(text)) %&gt;% 
+      mutate(Record = ifelse(grepl(&quot;:&quot;, text, fixed = TRUE), text, NA)) %&gt;%
+      separate(Record, into = c(&quot;Record&quot;, &quot;Value&quot;), sep = &quot;:&quot;, remove = FALSE) %&gt;%
+      fill(Record) %&gt;%
+      mutate(Value = ifelse(is.na(Value), 
+               ifelse(grepl(&quot;:&quot;, text, fixed = TRUE), NA, text), Value )) %&gt;%
+      select(Record, Value) %&gt;%
+      filter(!is.na(Value)) %&gt;%
+      filter(!grepl(&quot;^\\s*$&quot;, Value)) %&gt;%
+      unique() %&gt;%
+      group_by(Record) %&gt;%
+      summarize(Value = paste0(Value, collapse = &quot;, &quot;)) %&gt;%
+      ungroup() %&gt;%
+      pivot_wider(names_from = Record, values_from = Value) %&gt;%
+      mutate_all(as.character)
+    
+    # Robot name 
+    robot = info_split$Robot
+    
+    # Read both history tables and wrangle into table form
+    history &lt;- read_html(url) %&gt;%
+      html_nodes(&quot;.igsv-table&quot;) 
+    
+    if(length(history) &gt; 0){
+    stat_history &lt;- history[1] %&gt;% html_table(header = TRUE, fill = TRUE)
+    stat_history_df &lt;- stat_history[[1]] %&gt;%
+      mutate(Robot = robot) %&gt;%
+      mutate_all(as.character)
+    }
+    
+    if(length(history) &gt; 1){
+      match_history &lt;- history[2] %&gt;% html_table(header = TRUE, fill = TRUE)
+      match_history_df &lt;- match_history[[1]] %&gt;%
+        mutate(Robot = robot) %&gt;%
+        mutate_all(as.character)
+    }
+    
+    # Compile
+    if(i==1){
+      battlebotsinfo = info_split
+      battlebotsmatch = match_history_df
+      battlebotsstat = stat_history_df
+    } else {
+      battlebotsinfo = bind_rows(battlebotsinfo, info_split)
+      
+      if(length(history) &gt; 0){
+        battlebotsstat = bind_rows(battlebotsstat, stat_history_df)
+      }
+      
+      if(length(history) &gt; 1){
+        battlebotsmatch = bind_rows(battlebotsmatch, match_history_df)
+      }
+      
+    }
+    
+  } # End for loop 
+  
+  # Save files to make it easier next time
+  write.csv(battlebotsinfo, &quot;./files/battlebotsinfo.csv&quot;)
+  write.csv(battlebotsmatch, &quot;./files/battlebotsmatch.csv&quot;)
+  write.csv(battlebotsstat, &quot;./files/battlebotsstat.csv&quot;)
+
+}
+
+
+# References:
+# https://community.rstudio.com/t/convert-character-string-into-table/9158
+# https://stackoverflow.com/questions/42419765/convert-one-column-into-a-new-column-every-5-rows-a-numeric-interval
+#  - [Scraping in R rvest](https://www.dataquest.io/blog/web-scraping-in-r-rvest/)
+#  - [Tidy Web Scraping in R Tutorial and Resources](https://towardsdatascience.com/tidy-web-scraping-in-r-tutorial-and-resources-ac9f72b4fe47)</code></pre>
+<div id="frequency-of-battlebots-weapon-types" class="section level3">
+<h3>Frequency of Battlebots Weapon Types</h3>
+<pre class="r"><code>type_frequency &lt;- battlebotsinfo %&gt;%
+  group_by(Type) %&gt;%
+  summarize(freq = n()) %&gt;%
+  rename(&quot;word&quot; = &quot;Type&quot;)
+  
+my_wordcloud &lt;- wordcloud2(data=type_frequency, size = 0.5, shape = &#39;pentagon&#39;, color=&#39;random-dark&#39;)
+
+saveWidget(my_wordcloud, &quot;tmp.html&quot;, selfcontained = F)
+webshot(&quot;tmp.html&quot;, &quot;./images/wc1.png&quot;, delay = 5)</code></pre>
+<p><img src="battlebots_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code>#wordcloud2(demoFreq, color = &quot;random-light&quot;, backgroundColor = &quot;grey&quot;)
+
+# https://towardsdatascience.com/create-a-word-cloud-with-r-bde3e7422e8a
+# https://cran.r-project.org/web/packages/wordcloud2/vignettes/wordcloud.html#lettercloud-function</code></pre>
+</div>
+<div id="frequency-of-builder-day-jobs" class="section level3">
+<h3>Frequency of Builder Day Jobs</h3>
+<pre class="r"><code>job_frequency &lt;- battlebotsinfo %&gt;%
+  group_by(Job) %&gt;%
+  summarize(freq = n()) %&gt;%
+  rename(&quot;word&quot; = &quot;Job&quot;)
+  
+my_wordcloud &lt;- wordcloud2(data=job_frequency, size = 0.25, color=&#39;random-dark&#39;)
+saveWidget(my_wordcloud, &quot;tmp.html&quot;, selfcontained = F)
+webshot(&quot;tmp.html&quot;, &quot;./images/wc2.png&quot;, delay = 5)</code></pre>
+<p><img src="battlebots_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>#wordcloud2(demoFreq, color = &quot;random-light&quot;, backgroundColor = &quot;grey&quot;)
+
+# https://towardsdatascience.com/create-a-word-cloud-with-r-bde3e7422e8a
+# https://cran.r-project.org/web/packages/wordcloud2/vignettes/wordcloud.html#lettercloud-function</code></pre>
+</div>
+<div id="map-of-builder-locations" class="section level3">
+<h3>Map of Builder Locations</h3>
+<pre class="r"><code># library(rgeo)
+
+# 
+# world &lt;- ne_countries(scale = &quot;medium&quot;, returnclass = &quot;sf&quot;)
+# class(world)
+# 
+# 
+# map &lt;- battlebotsinfo %&gt;%
+#   select(Robot, Hometown) 
+# 
+# world &lt;- map_data(&quot;world&quot;) 
+# 
+# data &lt;- world.cities %&gt;% filter(country.etc==&quot;UK&quot;)
+# 
+# 
+# data &lt;- data %&gt;%
+#   arrange(pop) %&gt;%
+#   mutate( name=factor(name, unique(name))) %&gt;%
+#   mutate( mytext=paste(
+#     &quot;City: &quot;, name, &quot;\n&quot;, 
+#     &quot;Population: &quot;, pop, sep=&quot;&quot;)
+#   )
+# 
+# p &lt;- ggplot() +
+#   geom_polygon(data = world, aes(x=long, y = lat, group = group), fill=&quot;grey&quot;, alpha=0.3) +
+#   geom_point( data=data, aes(x=long, y=lat, text=mytext, alpha=pop)) +
+#   #geom_point(aes(x=long, y=lat, size=pop, color=pop, text=mytext, alpha=pop) ) +
+#   geom_text_repel( data=data %&gt;% arrange(pop) %&gt;% tail(10), aes(x=long, y=lat, label=name), size=5) +
+#   geom_point( data=data %&gt;% arrange(pop) %&gt;% tail(10), aes(x=long, y=lat), color=&quot;red&quot;, size=3) +
+#   theme_void() + ylim(50,59) + coord_map() +
+#   theme(legend.position=&quot;none&quot;)
+#  
+# pp &lt;- ggplotly(p, tooltip=&quot;text&quot;)
+# pp
+# 
+
+
+
+# mygggmap &lt;- get_map(location = &quot;United States&quot;, zoom = 4)
+# g &lt;- ggmap(myggmap)
+# 
+# g &lt;- g + geom_density2d(data = citydata, aes(x = lon, y = lat))
+# 
+# geocode(&quot;SEATTLE&quot;)
+# 
+# UK &lt;- map_data(&quot;world&quot;) %&gt;% filter(region==&quot;UK&quot;)
+# 
+# data &lt;- world.cities %&gt;% filter(country.etc==&quot;UK&quot;)
+# 
+# 
+# data &lt;- data %&gt;%
+#   arrange(pop) %&gt;%
+#   mutate( name=factor(name, unique(name))) %&gt;%
+#   mutate( mytext=paste(
+#     &quot;City: &quot;, name, &quot;\n&quot;, 
+#     &quot;Population: &quot;, pop, sep=&quot;&quot;)
+#   )
+# 
+# p &lt;- ggplot() +
+#   geom_polygon(data = UK, aes(x=long, y = lat, group = group), fill=&quot;grey&quot;, alpha=0.3) +
+#   geom_point( data=data, aes(x=long, y=lat, text=mytext, alpha=pop)) +
+#   #geom_point(aes(x=long, y=lat, size=pop, color=pop, text=mytext, alpha=pop) ) +
+#   geom_text_repel( data=data %&gt;% arrange(pop) %&gt;% tail(10), aes(x=long, y=lat, label=name), size=5) +
+#   geom_point( data=data %&gt;% arrange(pop) %&gt;% tail(10), aes(x=long, y=lat), color=&quot;red&quot;, size=3) +
+#   theme_void() + ylim(50,59) + coord_map() +
+#   theme(legend.position=&quot;none&quot;)
+#  
+# pp &lt;- ggplotly(p, tooltip=&quot;text&quot;)
+# pp
+  
+#https://stackoverflow.com/questions/29037851/how-do-i-plot-us-cities-using-ggplot
+#https://stackoverflow.com/questions/22752009/plot-on-ggmap-by-using-city-and-state
+#https://towardsdatascience.com/plotting-spatial-data-in-r-a38a405a07f1
+#https://cran.r-project.org/web/packages/usmap/vignettes/advanced-mapping.html 
+#https://www.r-graph-gallery.com/330-bubble-map-with-ggplot2.html
+#https://ggplot2-book.org/maps.html
+#https://www.r-graph-gallery.com/330-bubble-map-with-ggplot2.html
+#http://yluo86.github.io/rmaps
+#https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html
+#https://www.statsandr.com/blog/world-map-of-visited-countries-in-r/</code></pre>
+</div>
+</div>
+<div id="resources" class="section level2">
+<h2>Resources</h2>
 <p>Battlebots:</p>
 <ul>
 <li><a href="https://battlebots.com/">Official BattleBots page</a></li>
@@ -525,8 +754,8 @@ Your browser does not support iframes
 <li><a href="https://github.com/rstudio/rmarkdown/issues/1681" class="uri">https://github.com/rstudio/rmarkdown/issues/1681</a></li>
 <li><a href="https://stackoverflow.com/questions/58837184/r-2-column-layout-in-rmarkdown-with-tabset">R: 2 column layout in Rmarkdown with tabset</a></li>
 <li><a href="https://www.dataquest.io/blog/web-scraping-in-r-rvest/">Scraping in R rvest</a></li>
+<li><a href="https://towardsdatascience.com/tidy-web-scraping-in-r-tutorial-and-resources-ac9f72b4fe47">Tidy Web Scraping in R Tutorial and Resources</a></li>
 </ul>
-</div>
 </div>
 
 

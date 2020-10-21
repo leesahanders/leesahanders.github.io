@@ -3,6 +3,18 @@ title: ""
 name: "Lisa Anders"
 ---
 
+## Countries I've been to
+
+--- 
+
+```{r}
+
+
+
+#https://www.statsandr.com/blog/world-map-of-visited-countries-in-r/
+```
+
+
 ## What are you looking for? {.tabset}
 
 ---
