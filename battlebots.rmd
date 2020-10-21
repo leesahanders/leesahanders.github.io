@@ -298,6 +298,13 @@ p <- ggplot(data = world) +
   geom_sf(color = "black", fill = "lightgray") +
   xlab("Longitude") + ylab("Latitude") +
   geom_point( data=bbmap, aes(x=lon, y=lat, text=Team), color="red", size=1) +
+  # ggrepel::geom_label_repel(data = bbmap,
+  #            aes(x = lon, y = lat, label = Robot),
+  #            size = 1.5, alpha = 0.8,
+  #            label.r = unit(0.5, "lines"), label.size = 0.25,
+  #            segment.color = "red", segment.size = 1,
+  #            seed = 1002) +
+  #geom_text_repel(data=bbmap,aes(x = lon, y = lat, label = Robot),box.padding = 0.4,point.padding = 0.25,size=4,show.legend=FALSE)+
   ggtitle("Battlebots Hometowns World map", subtitle = paste0("(", length(unique(bbmap$Robot)), " teams)"))
 
 pp <- ggplotly(p, tooltip="text")
@@ -310,7 +317,6 @@ p
 #https://cran.r-project.org/web/packages/usmap/vignettes/advanced-mapping.html 
 #https://www.r-graph-gallery.com/330-bubble-map-with-ggplot2.html
 #https://ggplot2-book.org/maps.html
-#https://www.r-graph-gallery.com/330-bubble-map-with-ggplot2.html
 #http://yluo86.github.io/rmaps
 #https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html
 #https://www.statsandr.com/blog/world-map-of-visited-countries-in-r/
