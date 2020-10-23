@@ -239,7 +239,7 @@ type_frequency <- battlebotsinfo %>%
 my_wordcloud <- wordcloud2(data=type_frequency, size = 0.5, shape = 'pentagon', color='random-dark')
 
 saveWidget(my_wordcloud, "tmp.html", selfcontained = F)
-webshot("tmp.html", "./images/wc1.png", delay = 5)
+#webshot("tmp.html", "./images/wc1.png", delay = 5)
 
 #wordcloud2(demoFreq, color = "random-light", backgroundColor = "grey")
 
@@ -247,6 +247,7 @@ webshot("tmp.html", "./images/wc1.png", delay = 5)
 # https://cran.r-project.org/web/packages/wordcloud2/vignettes/wordcloud.html#lettercloud-function
 ```
 
+<iframe src="tmp.html" width='1000px' height='600px'></iframe>
 
 ### Frequency of Builder Day Jobs
 
@@ -258,8 +259,8 @@ job_frequency <- battlebotsinfo %>%
   rename("word" = "Job")
   
 my_wordcloud <- wordcloud2(data=job_frequency, size = 0.25, color='random-dark')
-saveWidget(my_wordcloud, "tmp.html", selfcontained = F)
-webshot("tmp.html", "./images/wc2.png", delay = 5)
+saveWidget(my_wordcloud, "tmp1.html", selfcontained = F)
+#webshot("tmp.html", "./images/wc2.png", delay = 5)
 
 #wordcloud2(demoFreq, color = "random-light", backgroundColor = "grey")
 
@@ -267,8 +268,11 @@ webshot("tmp.html", "./images/wc2.png", delay = 5)
 # https://cran.r-project.org/web/packages/wordcloud2/vignettes/wordcloud.html#lettercloud-function
 ```
 
+<iframe src="tmp1.html" width='1000px' height='600px'></iframe>
+
 
 ### Map of Builder Locations
+
 
 ```{r, message=FALSE, warning=FALSE}
 
@@ -307,9 +311,15 @@ p <- ggplot(data = world) +
   #geom_text_repel(data=bbmap,aes(x = lon, y = lat, label = Robot),box.padding = 0.4,point.padding = 0.25,size=4,show.legend=FALSE)+
   ggtitle("Battlebots Hometowns World map", subtitle = paste0("(", length(unique(bbmap$Robot)), " teams)"))
 
-pp <- ggplotly(p, tooltip="text")
+#pp <- ggplotly(p, tooltip="text")
+
+#assign("pp", plotly::ggplotly(p, tooltip="text"), envir=parent.frame())
+
 #pp
-p
+
+htmlwidgets::saveWidget( plotly::ggplotly(p, tooltip="text"), "temp.html")
+#print( htmltools::tags$iframe(src="temp.html", width=640, height=480) )
+
   
 #https://stackoverflow.com/questions/29037851/how-do-i-plot-us-cities-using-ggplot
 #https://stackoverflow.com/questions/22752009/plot-on-ggmap-by-using-city-and-state
@@ -323,7 +333,11 @@ p
 #https://cran.r-project.org/web/packages/tidygeocoder/vignettes/tidygeocoder.html
 #https://towardsdatascience.com/reverse-geocoding-in-r-f7fe4b908355
 #https://stackoverflow.com/questions/13905098/how-to-get-the-longitude-and-latitude-coordinates-from-a-city-name-and-country-i
+#https://stackoverflow.com/questions/59144842/why-does-ggplotly-does-not-work-in-rmarkdown-the-same-way-ggplot-does
 ```
+
+<iframe src="temp.html" width='1000px' height='800px'></iframe>
+
 
 ## Resources
 
