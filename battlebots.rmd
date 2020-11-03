@@ -317,7 +317,7 @@ p <- ggplot(data = world) +
 
 #pp
 
-htmlwidgets::saveWidget( plotly::ggplotly(p, tooltip="text"), "temp.html")
+htmlwidgets::saveWidget( plotly::ggplotly(p, tooltip="text"), "tmp3.html")
 #print( htmltools::tags$iframe(src="temp.html", width=640, height=480) )
 
   
@@ -337,6 +337,48 @@ htmlwidgets::saveWidget( plotly::ggplotly(p, tooltip="text"), "temp.html")
 ```
 
 <iframe src="temp.html" width='1000px' height='800px'></iframe>
+
+
+### Win Frequency by Robot Type
+
+```{r}
+
+win_frequency_raw <- merge(battlebotsinfo, battlebotsstat, by="Robot") %>%
+  select(Stats, Career, Robot, Type) %>%
+  filter(Stats %in% c("Total matches", "Total wins")) %>%
+  #mutate(Career = as.numeric(Stats)) %>%
+  pivot_wider(names_from = Stats, values_from = Career) %>%
+  unnest(`Total wins`) %>%
+  mutate(`Total wins` = as.numeric(`Total wins`),
+         `Total matches` = as.numeric(`Total matches`))
+
+type_wins <- win_frequency_raw %>%
+  group_by(Type) %>%
+  summarize(wins = sum(`Total wins`) / sum(`Total matches`))
+
+robot_wins <- win_frequency_raw %>%
+  group_by(Type) %>%
+  mutate(CountType = n()) %>%
+  ungroup() %>%
+  group_by(Robot, Type, CountType) %>%
+  summarize(wins = sum(`Total wins`) / sum(`Total matches`)) %>%
+  filter(CountType > 1) %>%
+  arrange(wins)
+
+
+
+p <- ggplot(robot_wins, aes(x=Type, y=wins)) + geom_boxplot() + theme(axis.text.x = element_text(angle = -90, hjust = 1))
+
+
+p <- ggplot(robot_wins, aes(x=reorder(Type, -wins, na.rm = TRUE), y=wins)) + geom_boxplot() + theme(axis.text.x = element_text(angle = -90, hjust = 1)) +  labs(y="Wins", x="Type")
+p
+
+# ggplot(robot_wins, aes(wins, Type)) + geom_boxplot()
+
+
+
+```
+
 
 
 ## Resources
