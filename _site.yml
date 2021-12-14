@@ -13,17 +13,30 @@ navbar:
     - text: "CV"
       icon: fa-file-pdf-o
       href: cv.html
+    - text: "R Projects"
+      icon: fa-database
+      menu:
+        - text: "Battlebots Brackets"
+          href: battlebots.html
+    - text: "The Workshop"
+      icon: fa-birthday-cake 
+      menu:
+        - text: "Resin Dice"
+          href: resin.html
     - text: "Blog"
       icon: fa-rss
       href: https://YOURGITHUB.github.io/blog/  # CHANGE HERE OR DELETE ALL 3 LINES 
   right:
-    - text: "Contact me"
-      icon: fa-envelope-o
-      href: mailto:YOUREMAIL                    # CHANGE HERE 
-    - text: "GitHub"
-      icon: fa-github
-      href: https://github.com/YOURGITHUB       # CHANGE HERE 
+    - icon: fa-envelope fa-lg
+    - icon: fa-facebook-f fa-lg
+      href: https://www.facebook.com/LisamaeAnders/
+    - icon: fa-book fa-lg
+      href: https://www.goodreads.com/user/show/47707460-lisa
+    - icon: fa-github fa-lg
+      href: https://github.com/leesahanders
+    - icon: fa-linkedin fa-lg
+      href: https://www.linkedin.com/in/lisa-anders-engineer/
 output:
   html_document:
-    theme: cosmo
-    highlight: textmate
+    theme: paper
+    highlight: kate

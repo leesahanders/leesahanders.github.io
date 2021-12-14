@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Adventures in Resin: Making your own dice</title>
+
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
+
+.sourceCode .row {
+  width: 100%;
+}
+.sourceCode {
+  overflow-x: auto;
+}
+.code-folding-btn {
+  margin-right: -30px;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Lisa Anders</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-user"></span>
+     
+    About
+  </a>
+</li>
+<li>
+  <a href="cv.html">
+    <span class="fa fa-file-pdf-o"></span>
+     
+    CV
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-database"></span>
+     
+    R Projects
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="battlebots.html">Battlebots Brackets</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-birthday-cake"></span>
+     
+    The Workshop
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="resin.html">Resin Dice</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="https://YOURGITHUB.github.io/blog/">
+    <span class="fa fa-rss"></span>
+     
+    Blog
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a>
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://www.facebook.com/LisamaeAnders/">
+    <span class="fa fa-facebook-f fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://www.goodreads.com/user/show/47707460-lisa">
+    <span class="fa fa-book fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://github.com/leesahanders">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://www.linkedin.com/in/lisa-anders-engineer/">
+    <span class="fa fa-linkedin fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Adventures in Resin: Making your own dice</h1>
+
+</div>
+
+
+<style>
+table, th, td {
+}
+
+th, td {
+  padding: 10px;
+}
+</style>
+<div id="experiments" class="section level2 tabset">
+<h2 class="tabset">Experiments</h2>
+<div id="silicone-mold" class="section level3">
+<h3>Silicone Mold</h3>
+<table style="width: 100%">
+<colgroup>
+<col span="1" style="width: 35%;">
+<col span="1" style="width: 65%;">
+</colgroup>
+<tr>
+<td>
+<img src="images/resin/PXL_20201005_031026679.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+<p>The basics I’ve gathered for learning how to make molds are:</p>
+<ul>
+<li>Smooth-On OOMOO</li>
+<li>Nitrile Gloves</li>
+<li>Small hand torch (originally meant for creme brulee)</li>
+<li>A Safety Pin</li>
+<li>Plasticine Clay</li>
+<li>Various small disposable cups, disposable plastic fork, measuring cup</li>
+<li>Handful of my least favorite dice</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>
+<img src="images/resin/PXL_20201005_013447645.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+<p>Going to the crafts store the whole time I was thinking “this is going to go GREAT. How hard could it be? The videos are so calming, surely the whole process is straight up zen.”</p>
+<p>WRONG.</p>
+After learning how difficult it is to attach a pin into a D6 (I would describe it more as teetering perilously rather than actually mounted) we got to move onto lessons into practically what pot time is. While on thebox it may say pot time of 30 minutes in practice I had less than 20 minutes to get the silicone into the mold before it was hardening to the point of not flowing smoothly.
+</td>
+</tr>
+<tr>
+<td>
+<img src="images/resin/PXL_20201005_015535872.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+Also had complete failure of the attempt at a vacuum chamber using my hand vaccuum, a small bell jar, and the valve on one of those clothes bags that let you vacuum the air out for better storage. No bubbles were successfully pulled out using this method, whether due to lack of a seal between the bell jar and the valve or if just wasn’t a strong enough vacuum.
+</td>
+</tr>
+<tr>
+<td>
+<img src="images/resin/PXL_20201005_022732163.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+The three mold attempts are sitting out to cure overnight before I’ll begin the process of removing the die and trying out adding resin. I’m doubtful any of these turned out but what a wonderful way to spend a couple hours!
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td>
+<p style="color:grey; font-style:italic;" align="right">
+10/4/2020
+</p>
+</td>
+</tr>
+</table>
+<hr />
+<table style="width: 100%;">
+<colgroup>
+<col span="1" style="width: 35%;">
+<col span="1" style="width: 65%;">
+</colgroup>
+<tr>
+<td>
+<img src="images/resin/PXL_20201005_161849020.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+Try 2 of creating the silicone mold. I was able to use the lessons from last time and create a mold with the sprue large enough to get a good amount in there while still having it be small enough that hopefully polishing won’t be horrible.
+</td>
+</tr>
+<tr>
+<td>
+<img src="images/resin/PXL_20201005_163835042.MP_2.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+Interesting enough I think that the mixture is very sensitive to the quantities of each part. While I was very careful to match the volumes using my trusty 1/2 cup measuring spoon we can notice a distinct change in color. Despite this change in color it did successfully set and it doesn’t feel different and will do nicely as a mold.
+</td>
+</tr>
+<tr>
+<td>
+<img src="images/resin/PXL_20201005_160755962.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+I’m a little concerned with my splits in the mold for removing the pieces. Hopefully it will seal up well enough that we won’t have the resin leaking out or really large obvious lines.
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td>
+<p style="color:grey; font-style:italic;" align="right">
+10/5-6/2020
+</p>
+</td>
+</tr>
+</table>
+<hr />
+</div>
+<div id="pouring-the-resin" class="section level3">
+<h3>Pouring the Resin</h3>
+<table style="width: 100%" cellpadding="5">
+<colgroup>
+<col span="1" style="width: 35%;">
+<col span="1" style="width: 65%;">
+</colgroup>
+<tr>
+<td>
+<img src="images/resin/PXL_20201007_004924418.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+<p>The ingredients for pouring the resin:</p>
+<ul>
+<li>Dried flowers</li>
+<li>Food coloring</li>
+<li>Mica powders</li>
+<li>EasyCast resin</li>
+<li>Dixie cups, pipettes, nitrile glove, facemask (not pictured)</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>
+<img src="images/resin/PXL_20201008_054415456.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+<p>This batch I decided to focus on blues.</p>
+<p>Recipe:</p>
+<ul>
+<li>2 drops blue food coloring</li>
+<li>For 2 of the dice added the green mica powder</li>
+</ul>
+Since I layered it in with pure blue on bottom and the blue + mica powder on top it really developed a beautiful layering effect.
+</td>
+<tr>
+<tr>
+<td>
+</td>
+<td>
+<p style="color:grey; font-style:italic;" align="right">
+10/6/2020
+</p>
+</td>
+</tr>
+</table>
+<hr />
+<table style="width: 100%" cellpadding="5">
+<colgroup>
+<col span="1" style="width: 35%;">
+<col span="1" style="width: 65%;">
+</colgroup>
+<tr>
+<td>
+<img src="images/resin/PXL_20201009_010445950.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+<p>Recipe:</p>
+<ul>
+<li>1 drop ‘kiwi’ food coloring</li>
+<li>Half of a handle full of green metallic mica powder</li>
+<li>Blue flower</li>
+</ul>
+Thoroughly mix equal parts of resin for 2 minutes, transfer to second container and add coloring. Mix for an additional minute and use pipettes (two pipette method where one can fill while you use the other one) to fill each mold. Gently insert a flower once 3/4 full. Swish the containers by rotating to encourage air bubbles to exit from difficult places in the mold.
+</td>
+</tr>
+<tr>
+<td>
+<img src="images/resin/PXL_20201009_010433085.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+Wow this just turned out BEAUTIFUL.
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td>
+<p style="color:grey; font-style:italic;" align="right">
+10/7/2020
+</p>
+</td>
+</tr>
+</table>
+<hr />
+<table style="width: 100%">
+<colgroup>
+<col span="1" style="width: 35%;">
+<col span="1" style="width: 65%;">
+</colgroup>
+<tr>
+<td>
+<img src="images/resin/PXL_20201010_030648486.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+Same recipe as before, still looks beautiful and we now have a matching set of 6!
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td>
+<p style="color:grey; font-style:italic;" align="right">
+10/8/2020
+</p>
+</td>
+</tr>
+</table>
+<hr />
+</div>
+<div id="polishing" class="section level3">
+<h3>Polishing</h3>
+<table style="width: 100%" >
+<colgroup>
+<col span="1" style="width: 35%;">
+<col span="1" style="width: 65%;">
+</colgroup>
+<tr>
+<td>
+<img src="images/resin/PXL_20201008_180158037.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+I’ve gathered my polishing components: namely various grits of sandpaper and some car automotive buff.
+</td>
+</tr>
+<tr>
+<td>
+<img src="images/resin/PXL_20201008_053345606.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+<p>First step is trimming off the sprue. This was done using a pair of shears (I used wirecutters). The ends come off pretty explosively (think nail trimming but times a million) so definitely be careful which direction you are pointing the die and the sprue.</p>
+All three have some kind of bubble where resin wasn’t able to really fill the mold. Maybe doing a “swish” after filling will help next time for preventing this?
+</td>
+</tr>
+<tr>
+<td>
+<img src="images/resin/PXL_20201008_054320983.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+Here we have the before polishing with all the imperfections and remainder of the sprue.
+</td>
+</tr>
+<tr>
+<td>
+<img src="images/resin/PXL_20201008_180436917.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+<p>And here is our after with all the edges buffed out. Looking better, right? I think we can do better though because I did notice that the sides that came out looking good and shiny after being buffedstarted looking cloudy.</p>
+Ideas for next time are to spend more time polishing on the finest grit. Maybe that will help get it super shiny? And spend longer polishing. It’s about time for a netflix marathon anyway.
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td>
+<p style="color:grey; font-style:italic;" align="right">
+10/8/2020
+</p>
+</td>
+</tr>
+</table>
+<hr />
+<table style="width: 100%" border-spacing = "5" border-padding = "5">
+<colgroup>
+<col span="1" style="width: 35%;">
+<col span="1" style="width: 65%;">
+</colgroup>
+<tr>
+<td>
+<img src="images/resin/PXL_20201009_010423494.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="left">
+</td>
+<td>
+Very happy to report success with the “swish”. Only 1 out of the three dice has a bubble in the corner disrupting the pattern (and this one is the hardest mold, with the highest point being higher than where the sprue intersects).
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td>
+<p style="color:grey; font-style:italic;" align="right">
+10/9/2020
+</p>
+</td>
+</tr>
+</table>
+<hr />
+</div>
+<div id="rolling-the-dice" class="section level3">
+<h3>Rolling the Dice</h3>
+<p>Now that our unique dice have been cured, painted, and polished it was time to put them to the test. Sure they look pretty (minus the occasional bubble and polish mark) but can they ROLL?</p>
+<p>Here, I am proud to present to you, are our candidates for the roll off!</p>
+<p><img src="images/resin/PXL_20201010_033639772.MP.jpg" style="width:100%; border:10px solid; margin-right: 20px" align="center"></p>
+<p>Each die was rolled 50 times to give some statistical significance to the results. Ideally we would have a hundred rolls or more per die (1,000 would be a really great number) but I decided to balance statistics with the chances of developing arthritis.</p>
+<p>In addition to rolling each of our manufactured dice 50 times a professional metal die was rolled 50 times to give a reference for our measurements.</p>
+<p>The conclusion:<br />
+Well. Looks like my metal dice is weighted (both literally but also rolls 6 much more often). The resin dice performed better than I expected. I was expected to see the dice with remnants of a bubble or bumps to really have a very significant impact, but honestly they look comparable to the metal die.</p>
+<p>Our results:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;readxl&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#library(rjags)</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>rolls <span class="ot">=</span> <span class="fu">read_excel</span>(<span class="st">&quot;./files/Dice_rolls.xlsx&quot;</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>rolls_long <span class="ot">&lt;-</span> rolls <span class="sc">%&gt;%</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">names_to =</span> <span class="st">&quot;Dice&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;RollValue&quot;</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>rolls_summary <span class="ot">&lt;-</span> rolls_long <span class="sc">%&gt;%</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Dice, RollValue) <span class="sc">%&gt;%</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> <span class="fu">n</span>())</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(rolls_summary, <span class="fu">aes</span>(<span class="at">x=</span>RollValue, <span class="at">y=</span>Count, <span class="at">fill =</span> Dice )) <span class="sc">+</span> </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">reverse =</span> <span class="cn">TRUE</span>)) <span class="sc">+</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Dice) <span class="sc">+</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="resin_files/figure-html/cars-1.png" width="672" /></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(rolls_summary) <span class="sc">+</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x=</span>Dice, <span class="at">y=</span>Count, <span class="at">fill =</span> RollValue ), <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">reverse =</span> <span class="cn">TRUE</span>)) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="resin_files/figure-html/cars-2.png" width="672" /></p>
+<p style="color:grey; font-style:italic;" align="right">
+10/10/2020
+</p>
+</div>
+</div>
+<div id="resources" class="section level2">
+<h2>Resources</h2>
+<p>Here are some of the resources that helped me on my journey down this exciting and swearing-inducing path (in no particular order):</p>
+<ul>
+<li><a href="https://www.evewynn.com/moldmaking" class="uri">https://www.evewynn.com/moldmaking</a></li>
+<li><a href="http://www.hanleybrady.com/making-dice-part-1-molds/" class="uri">http://www.hanleybrady.com/making-dice-part-1-molds/</a></li>
+<li><a href="https://www.instructables.com/Custom-Dice/" class="uri">https://www.instructables.com/Custom-Dice/</a></li>
+<li><a href="https://www.thingiverse.com/thing:3795542" class="uri">https://www.thingiverse.com/thing:3795542</a></li>
+<li><a href="https://www.youtube.com/watch?v=iRDte2j54F0" class="uri">https://www.youtube.com/watch?v=iRDte2j54F0</a></li>
+<li><a href="https://www.reddit.com/r/dice/comments/8zemqn/looking_to_resin_cast_my_own_dice/" class="uri">https://www.reddit.com/r/dice/comments/8zemqn/looking_to_resin_cast_my_own_dice/</a></li>
+<li><a href="https://www.youtube.com/watch?v=FQ1A7ZjTsx8" class="uri">https://www.youtube.com/watch?v=FQ1A7ZjTsx8</a></li>
+<li><a href="https://rpubs.com/benjamin_chittick/59278" class="uri">https://rpubs.com/benjamin_chittick/59278</a></li>
+<li><a href="https://rstudio-education.github.io/hopr/project-1-weighted-dice.html" class="uri">https://rstudio-education.github.io/hopr/project-1-weighted-dice.html</a></li>
+<li><a href="http://ditraglia.com/Econ103Public/Rtutorials/Rtutorial4.html" class="uri">http://ditraglia.com/Econ103Public/Rtutorials/Rtutorial4.html</a></li>
+<li><a href="https://dk81.github.io/dkmathstats_site/rvisual-bargraphs.html" class="uri">https://dk81.github.io/dkmathstats_site/rvisual-bargraphs.html</a></li>
+<li><a href="https://cran.r-project.org/web/packages/tidydice/vignettes/tidydice.html" class="uri">https://cran.r-project.org/web/packages/tidydice/vignettes/tidydice.html</a></li>
+</ul>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
