@@ -1,7 +1,7 @@
-name: "Lisa Anders"                                # CHANGE HERE 
+name: "Lisa Anders"                                
 output_dir: "."
 navbar:
-  title: "Lisa Anders"                             # CHANGE HERE 
+  title: "Lisa Anders"                             
   type: inverse
   left:
     - text: "Home"
@@ -23,9 +23,6 @@ navbar:
       menu:
         - text: "Resin Dice"
           href: resin.html
-    - text: "Blog"
-      icon: fa-rss
-      href: https://YOURGITHUB.github.io/blog/  # CHANGE HERE OR DELETE ALL 3 LINES 
   right:
     - icon: fa-envelope fa-lg
     - icon: fa-facebook-f fa-lg
@@ -38,5 +35,5 @@ navbar:
       href: https://www.linkedin.com/in/lisa-anders-engineer/
 output:
   html_document:
-    theme: paper
-    highlight: kate
+    theme: cosmo
+    highlight: pygments

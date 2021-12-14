@@ -2,14 +2,7 @@
 title: "About Me"
 ---
 
-## About Me
-
 <img src="images/Rocinante.jpg" style="width:50%; border:10px solid; margin-right: 20px" align="left">
-
-+ __Name:__ Lisa 
-+ __Ocupation:__ Product Engineer
-+ __Hobbies:__ Coffee, puzzles, games, hiking, building things, the hurdy gurdy
-
 
 Hello there! You must be pretty awesome if you are checking out my humble website. Welcome! 
 
@@ -17,8 +10,7 @@ Currently my passion is wrangling across challenging datasets to find insights. 
 
 In my spare time I enjoy working on my various R based projects, building things, and talking about anything SciFi. 
 
-My resume is available [here](files/Anders_resume_2020V1.pdf)
-
+ 
 <!-- http://leesahanders.github.io -->
 
 <!-- https://leesahanders.github.io/index.html-->
@@ -27,13 +19,11 @@ My resume is available [here](files/Anders_resume_2020V1.pdf)
 
 <!-- rmarkdown::render_site(encoding = "UTF-8") -->
 
-Rmarkdown resources: 
+<!--     - text: "Blog"
+      icon: fa-rss
+      href: https://YOURGITHUB.github.io/blog/  # CHANGE HERE OR DELETE ALL 3 LINES 
+ -->
 
- - https://github.com/privefl/rmarkdown-website-template 
- - https://www.emilyzabor.com/tutorials/rmarkdown_websites_tutorial.html
- - https://livefreeordichotomize.com/2017/08/08/how-to-make-an-rmarkdown-website/
- - https://rstudio4edu.github.io/rstudio4edu-book/make-rmd.html
- 
 
 
 
