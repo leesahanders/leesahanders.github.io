@@ -35,5 +35,4 @@ navbar:
       href: https://www.linkedin.com/in/lisa-anders-engineer/
 output:
   html_document:
-    theme: cosmo
-    highlight: pygments
+    theme: lumen

@@ -2,7 +2,7 @@
 title: "Welcome to my website!"
 ---
 
-You're up and running!
+Grab a cup of coffee, I hope you enjoy the pages you find here. 
 
 + __Name:__ Lisa 
 + __Ocupation:__ Product Engineer
