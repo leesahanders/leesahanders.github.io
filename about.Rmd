@@ -21,11 +21,19 @@ My resume is available [here](files/Anders_resume_2020V1.pdf)
 
 <!-- http://leesahanders.github.io -->
 
+<!-- https://leesahanders.github.io/index.html-->
+
+<!-- file.create(".nojekyll") -->
+
 <!-- rmarkdown::render_site(encoding = "UTF-8") -->
 
 Rmarkdown resources: 
 
  - https://github.com/privefl/rmarkdown-website-template 
+ - https://www.emilyzabor.com/tutorials/rmarkdown_websites_tutorial.html
+ - https://livefreeordichotomize.com/2017/08/08/how-to-make-an-rmarkdown-website/
+ - https://rstudio4edu.github.io/rstudio4edu-book/make-rmd.html
+ 
 
 
 
