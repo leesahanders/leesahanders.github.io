@@ -1,14 +1,10 @@
 # Details
 
-This is a a placeholder
+Hey there! This is still under development. Come back later :) 
 
-Link template [Link Placeholder](http://rmarkdown.rstudio.com/rmarkdown_websites.html).
+### References
 
-## Procedure
-
-### Prerequisites
-
-- Bullet 
+- http://rmarkdown.rstudio.com/rmarkdown_websites.html 
 
 - Placeholder `rmarkdown::render_site(encoding = "UTF-8")` or just `Ctrl/Cmd + Shift + B`.
 
